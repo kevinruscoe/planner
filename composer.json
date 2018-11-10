@@ -1,0 +1,24 @@
+{
+    "name": "kevinruscoe/carbon-planner",
+    "description": "A simple day planner.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Kevin Ruscoe",
+            "email": "hello@kevinruscoe.me"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "KevinRuscoe\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "KevinRuscoe\\Tests\\": "tests/"
+        }
+    }
+}

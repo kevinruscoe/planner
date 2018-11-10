@@ -25,9 +25,11 @@ class Planner
     private $events = [];
 
     /**
-     * Creates a new CarbonPlanner
+     * Creates a new Planner
      *
-     * @param DayPlanner $bounds The planner bounds.
+     * @param DateBounds $bounds The planner bounds.
+     *
+     * @return Planner $this
      */
     public function __construct(DateBounds $bounds)
     {
@@ -41,7 +43,7 @@ class Planner
      *
      * @param DateBounds $bounds The planner bounds.
      *
-     * @return DayPlanner $this
+     * @return Planner $this
      */
     public function setBounds(DateBounds $bounds)
     {
@@ -60,6 +62,13 @@ class Planner
         return $this->bounds;
     }
 
+    /**
+     * Adds an event to the planner.
+     *
+     * @param DateBounds $event
+     *
+     * @return Planner $this
+     */
     public function addEvent(DateBounds $event)
     {
         if (! $this->getBounds()->overlaps($event)) {
@@ -75,6 +84,13 @@ class Planner
         return $this;
     }
 
+    /**
+     * Adds an array of events to the planner.
+     *
+     * @param array $events
+     *
+     * @return Planner $this
+     */
     public function addEvents(array $events)
     {
         foreach ($events as $event) {
@@ -84,11 +100,23 @@ class Planner
         return $this;
     }
 
+    /**
+     * Gets the events of the planner.
+     *
+     * @return array
+     */
     public function getEvents()
     {
         return $this->events;
     }
 
+    /**
+     * Checks if the event can be added.
+     *
+     * @param DateBounds $event
+     *
+     * @return bool
+     */
     private function canFulfillEvent($event)
     {
         foreach ($this->getEvents() as $currentEvent) {

@@ -11,14 +11,14 @@ class DateBounds
     /**
      * The start of the bounds.
      *
-     * @var DateTime;
+     * @var DateTime
      */
     private $start;
 
     /**
      * The end of the bounds.
      *
-     * @var DateTime;
+     * @var DateTime
      */
     private $end;
 
@@ -102,12 +102,8 @@ class DateBounds
     public function overlaps(DateBounds $otherBounds)
     {
         return (
-            (
-                $otherBounds->getStart() < $this->getEnd()
-            ) &&
-            (
-                $otherBounds->getEnd() > $this->getStart()
-            )
+            $otherBounds->getStart() < $this->getEnd() &&
+            $otherBounds->getEnd() > $this->getStart()
         );
     }
 

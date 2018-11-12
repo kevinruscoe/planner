@@ -18,7 +18,7 @@ class Planner
 
 
     /**
-     * An array of DateBounds day event.
+     * An array of DateBounds events.
      *
      * @var array
      */
@@ -72,11 +72,11 @@ class Planner
     public function addEvent(DateBounds $event)
     {
         if (! $this->getBounds()->overlaps($event)) {
-            throw new \Exception("The given bounds is not without this bounds.");
+            throw new \Exception("The given DateBounds is not within this DateBounds.");
         }
 
         if ($this->canFulfillEvent($event)) {
-            throw new \Exception("An event already exists during the even bounds.");
+            throw new \Exception("A DateBounds already exists during the given DateBounds.");
         }
 
         $this->events[] = $event;
@@ -117,7 +117,7 @@ class Planner
      *
      * @return bool
      */
-    private function canFulfillEvent($event)
+    public function canFulfillEvent($event)
     {
         foreach ($this->getEvents() as $currentEvent) {
             if ($currentEvent->overlaps($event)) {
